@@ -1,7 +1,6 @@
 import { Header } from './header';
 import { HeroSection } from './hero-section';
 import { VisualShowcase } from './visual-showcase';
-import { ProductionSection } from './production-section';
 import { Footer } from './footer';
 
 export default function LandingPage() {
@@ -11,7 +10,6 @@ export default function LandingPage() {
       <main className="flex-grow">
         <HeroSection />
         <VisualShowcase />
-        <ProductionSection />
       </main>
       <Footer />
     </div>
