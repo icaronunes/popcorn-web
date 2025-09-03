@@ -53,9 +53,9 @@ const features = [
 export function VisualShowcase() {
   return (
     <ScrollReveal>
-      <section id="features" className="relative py-16 sm:py-24 bg-secondary/30">
+      <section id="features" className="relative py-16 sm:py-10 bg-secondary/30">
         <Image
-          src="https://picsum.photos/1920/1080?random=2"
+          src="https://picsum.photos/1920/1080?random=3"
           alt="Background image of app showcase"
           fill
           className="object-cover opacity-10"
@@ -64,10 +64,10 @@ export function VisualShowcase() {
         <div className="relative container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4">
-              A Glimpse Inside
+              Aplicativo PopCorn Show
             </h2>
             <p className="text-muted-foreground md:text-lg">
-              Experience a clean, intuitive, and beautifully designed interface that makes tracking your favorite entertainment a breeze.
+              Explore as funcionalidades do nosso aplicativo
             </p>
           </div>
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
