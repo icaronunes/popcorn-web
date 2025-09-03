@@ -53,8 +53,15 @@ const features = [
 export function VisualShowcase() {
   return (
     <ScrollReveal>
-      <section id="features" className="py-16 sm:py-24">
-        <div className="container mx-auto px-4">
+      <section id="features" className="relative py-16 sm:py-24 bg-secondary/30">
+        <Image
+          src="https://picsum.photos/1920/1080?random=2"
+          alt="Background image of app showcase"
+          fill
+          className="object-cover opacity-10"
+          data-ai-hint="app showcase"
+        />
+        <div className="relative container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4">
               A Glimpse Inside
