@@ -1,6 +1,4 @@
-import { Button } from '@/components/ui/button';
-import { GooglePlayIcon } from '@/components/icons/google-play-icon';
-import Image from 'next/image';
+import Image from "next/image";
 
 export function HeroSection() {
   return (
@@ -9,30 +7,18 @@ export function HeroSection() {
         src="https://picsum.photos/1920/1080"
         alt="Background image of a movie theater"
         fill
-        className="object-cover opacity-20"
+        className="object-cover opacity-50"
         data-ai-hint="movie theater"
       />
       <div className="relative container mx-auto px-4 py-24 sm:py-32 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-headline leading-tight tracking-tighter">
-            Your Ultimate Movie and Series Companion
+            Acompanhe tudo que você ama em um só lugar
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Discover, track, and enjoy your favorite movies, series, actors,
-            and production houses all in one place.
+            Descubra, acompanhe e curta seus filmes, séries e produções, tudo em
+            um só lugar.
           </p>
-          <div className="mt-10">
-            <Button
-              size="lg"
-              asChild
-              className="shadow-lg transform transition-transform duration-300 hover:scale-105"
-            >
-              <a href="#">
-                <GooglePlayIcon className="h-6 w-6 mr-3" />
-                Get on Google Play
-              </a>
-            </Button>
-          </div>
         </div>
       </div>
     </section>
