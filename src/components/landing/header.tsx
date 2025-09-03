@@ -13,9 +13,7 @@ export function Header() {
         </Link>
         <nav className="ml-10 hidden md:flex items-center space-x-6 text-sm font-medium">
           <Link href="#features" className="text-muted-foreground transition-colors hover:text-primary">Features</Link>
-          <Link href="#movies" className="text-muted-foreground transition-colors hover:text-primary">Movies</Link>
-          <Link href="#series" className="text-muted-foreground transition-colors hover:text-primary">Series</Link>
-          <Link href="#actors" className="text-muted-foreground transition-colors hover:text-primary">Actors</Link>
+          <Link href="#production" className="text-muted-foreground transition-colors hover:text-primary">Production</Link>
         </nav>
         <div className="flex flex-1 items-center justify-end">
           <Button asChild>
