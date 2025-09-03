@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { ScrollReveal } from './scroll-reveal';
 
-const PhoneMockup = ({ src, alt, hint }: { src: string; alt: string; hint: string }) => (
-    <div className="relative w-full max-w-xs">
+const PhoneMockup = ({ src, alt, hint, label }: { src: string; alt: string; hint: string; label: string }) => (
+    <div className="relative w-full max-w-xs text-center">
         <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[10px] rounded-[2.5rem] h-[540px] w-[270px] shadow-xl">
             <div className="w-[125px] h-[15px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
             <div className="h-[40px] w-[3px] bg-gray-800 absolute -start-[13px] top-[100px] rounded-s-lg"></div>
@@ -19,8 +19,36 @@ const PhoneMockup = ({ src, alt, hint }: { src: string; alt: string; hint: strin
                 />
             </div>
         </div>
+        <p className="mt-4 text-lg font-medium">{label}</p>
     </div>
 );
+
+const features = [
+  {
+    label: 'Acompanhando',
+    src: 'https://picsum.photos/300/600?random=4',
+    alt: 'App screenshot 1',
+    hint: 'app screen tracking'
+  },
+  {
+    label: 'Series',
+    src: 'https://picsum.photos/300/600?random=5',
+    alt: 'App screenshot 2',
+    hint: 'app screen series'
+  },
+  {
+    label: 'Movie',
+    src: 'https://picsum.photos/300/600?random=6',
+    alt: 'App screenshot 3',
+    hint: 'app screen movie'
+  },
+  {
+    label: 'Pessoa',
+    src: 'https://picsum.photos/300/600?random=7',
+    alt: 'App screenshot 4',
+    hint: 'app screen person'
+  }
+];
 
 export function VisualShowcase() {
   return (
@@ -36,10 +64,9 @@ export function VisualShowcase() {
             </p>
           </div>
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-            <PhoneMockup src="https://picsum.photos/300/600?random=4" alt="App screenshot 1" hint="app screen" />
-            <PhoneMockup src="https://picsum.photos/300/600?random=5" alt="App screenshot 2" hint="app screen" />
-            <PhoneMockup src="https://picsum.photos/300/600?random=6" alt="App screenshot 3" hint="app screen" />
-            <PhoneMockup src="https://picsum.photos/300/600?random=7" alt="App screenshot 4" hint="app screen" />
+            {features.map((feature) => (
+              <PhoneMockup key={feature.label} src={feature.src} alt={feature.alt} hint={feature.hint} label={feature.label} />
+            ))}
           </div>
         </div>
       </section>
