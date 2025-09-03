@@ -11,9 +11,9 @@ const PhoneMockup = ({ src, alt, hint, label }: { src: string; alt: string; hint
             <div className="rounded-[2rem] overflow-hidden w-[250px] h-[520px] bg-white dark:bg-gray-800">
                 <Image
                     src={src}
-                    className="object-cover w-full h-full"
+                    className="object-cover w-full h-auto animate-scroll-vertical"
                     width={250}
-                    height={520}
+                    height={800}
                     alt={alt}
                     data-ai-hint={hint}
                 />
@@ -26,25 +26,25 @@ const PhoneMockup = ({ src, alt, hint, label }: { src: string; alt: string; hint
 const features = [
   {
     label: 'Acompanhando',
-    src: 'https://picsum.photos/300/600?random=4',
+    src: 'https://picsum.photos/300/800?random=4',
     alt: 'App screenshot 1',
     hint: 'app screen tracking'
   },
   {
     label: 'Series',
-    src: 'https://picsum.photos/300/600?random=5',
+    src: 'https://picsum.photos/300/800?random=5',
     alt: 'App screenshot 2',
     hint: 'app screen series'
   },
   {
     label: 'Movie',
-    src: 'https://picsum.photos/300/600?random=6',
+    src: 'https://picsum.photos/300/800?random=6',
     alt: 'App screenshot 3',
     hint: 'app screen movie'
   },
   {
     label: 'Pessoa',
-    src: 'https://picsum.photos/300/600?random=7',
+    src: 'https://picsum.photos/300/800?random=7',
     alt: 'App screenshot 4',
     hint: 'app screen person'
   }

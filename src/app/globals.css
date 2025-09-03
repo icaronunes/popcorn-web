@@ -82,3 +82,17 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  @keyframes scroll-vertical {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(calc(-100% + 520px));
+    }
+  }
+  .animate-scroll-vertical {
+    animation: scroll-vertical 10s ease-in-out infinite;
+  }
+}
