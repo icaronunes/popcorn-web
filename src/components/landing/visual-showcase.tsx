@@ -14,74 +14,63 @@ type Feature = {
 const PhoneMockup = ({ feature }: { feature: Feature[] }) => {
   const [current, setCurrent] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  let loadedCount = 0;
 
-  const handleImageLoad = () => {
-    loadedCount++;
-    if (loadedCount === feature.length * 2) {
-      setImagesLoaded(true);
-    }
-  };
+  useEffect(() => {
+    let loadedCount = 0;
+    const imagesToLoad = feature.length;
+
+    feature.forEach((f) => {
+      const img = new window.Image();
+      img.src = f.src;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === imagesToLoad) {
+          setImagesLoaded(true);
+        }
+      };
+    });
+  }, [feature]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (imagesLoaded) {
       interval = setInterval(() => {
-        setCurrent((prev) => (prev === 0 ? 1 : 0));
+        setCurrent((prev) => (prev + 1) % feature.length);
       }, 5000);
     }
     return () => clearInterval(interval);
-  }, [imagesLoaded]);
+  }, [imagesLoaded, feature.length]);
 
   return (
     <div className="relative w-full max-w-xs text-center">
-      <div className="hidden">
-        {feature.map((f) => (
-          <Image
-            key={f.src}
-            src={f.src}
-            alt=""
-            width={250}
-            height={800}
-            priority
-            onLoad={handleImageLoad}
-          />
-        ))}
-        {feature.map((f) => (
-          <Image
-            key={f.srcLarge}
-            src={f.srcLarge}
-            alt=""
-            width={250}
-            height={800}
-            priority
-            onLoad={handleImageLoad}
-          />
-        ))}
-      </div>
-
       <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[10px] rounded-[2.5rem] h-[540px] w-[270px] shadow-xl">
         <div className="w-[125px] h-[15px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
         <div className="h-[40px] w-[3px] bg-gray-800 absolute -start-[13px] top-[100px] rounded-s-lg"></div>
         <div className="h-[40px] w-[3px] bg-gray-800 absolute -start-[13px] top-[158px] rounded-s-lg"></div>
         <div className="h-[55px] w-[3px] bg-gray-800 absolute -end-[13px] top-[120px] rounded-e-lg"></div>
-        <div className="rounded-[2rem] overflow-hidden w-[250px] h-[520px] bg-white dark:bg-gray-800">
-          <Image
-            src={feature[current].src}
-            className="object-cover w-full h-auto animate-scroll-vertical"
-            width={250}
-            height={800}
-            loading="eager"
-            quality={100}
-            alt={feature[current].alt}
-            data-ai-hint={feature[current].hint}
-          />
+        <div className="rounded-[2rem] overflow-hidden w-[250px] h-[520px] bg-white dark:bg-gray-800 relative">
+          {feature.map((f, index) => (
+            <Image
+              key={f.src}
+              src={f.src}
+              className={`absolute top-0 left-0 object-cover w-full h-auto animate-scroll-vertical transition-opacity duration-1000 ${
+                index === current ? "opacity-100" : "opacity-0"
+              }`}
+              width={250}
+              height={800}
+              loading="eager"
+              quality={100}
+              alt={f.alt}
+              data-ai-hint={f.hint}
+            />
+          ))}
         </div>
       </div>
       <p className="mt-4 text-lg font-medium">{feature[current].label}</p>
     </div>
   );
 };
+
 
 const features: Feature[][] = [
   [
