@@ -11,67 +11,6 @@ type Feature = {
   label: string;
 };
 
-const PhoneMockup = ({ feature }: { feature: Feature[] }) => {
-  const [current, setCurrent] = useState(0);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  useEffect(() => {
-    let loadedCount = 0;
-    const imagesToLoad = feature.length;
-
-    feature.forEach((f) => {
-      const img = new window.Image();
-      img.src = f.src;
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === imagesToLoad) {
-          setImagesLoaded(true);
-        }
-      };
-    });
-  }, [feature]);
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (imagesLoaded) {
-      interval = setInterval(() => {
-        setCurrent((prev) => (prev + 1) % feature.length);
-      }, 5000);
-    }
-    return () => clearInterval(interval);
-  }, [imagesLoaded, feature.length]);
-
-  return (
-    <div className="relative w-full max-w-xs text-center">
-      <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[10px] rounded-[2.5rem] h-[540px] w-[270px] shadow-xl">
-        <div className="w-[125px] h-[15px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
-        <div className="h-[40px] w-[3px] bg-gray-800 absolute -start-[13px] top-[100px] rounded-s-lg"></div>
-        <div className="h-[40px] w-[3px] bg-gray-800 absolute -start-[13px] top-[158px] rounded-s-lg"></div>
-        <div className="h-[55px] w-[3px] bg-gray-800 absolute -end-[13px] top-[120px] rounded-e-lg"></div>
-        <div className="rounded-[2rem] overflow-hidden w-[250px] h-[520px] bg-white dark:bg-gray-800 relative">
-          {feature.map((f, index) => (
-            <Image
-              key={`${f.src}-${index}`}
-              src={f.src}
-              className={`absolute top-0 left-0 object-cover w-full h-auto animate-scroll-vertical transition-opacity duration-1000 ${
-                index === current ? "opacity-100" : "opacity-0"
-              }`}
-              width={250}
-              height={800}
-              loading="eager"
-              quality={100}
-              alt={f.alt}
-              data-ai-hint={f.hint}
-            />
-          ))}
-        </div>
-      </div>
-      <p className="mt-4 text-lg font-medium">{feature[current].label}</p>
-    </div>
-  );
-};
-
-
 const features: Feature[][] = [
   [
     {
@@ -83,8 +22,8 @@ const features: Feature[][] = [
     },
     {
       label: "Acompanhando",
-      src: "/segue.webp",
-      srcLarge: "/segue-large.webp",
+      src: "/segue2.webp",
+      srcLarge: "/segue2-large.webp",
       alt: "App screenshot 2",
       hint: "app screen series",
     },
@@ -99,8 +38,8 @@ const features: Feature[][] = [
     },
     {
       label: "Series",
-      src: "/segue.webp",
-      srcLarge: "/segue-large.webp",
+      src: "/serie2.webp",
+      srcLarge: "/segue2-large.webp",
       alt: "App screenshot 4",
       hint: "app screen tracking",
     },
@@ -115,8 +54,8 @@ const features: Feature[][] = [
     },
     {
       label: "Filmes",
-      src: "/movie-large.webp",
-      srcLarge: "/movie-large.webp",
+      src: "/movie2.webp",
+      srcLarge: "/movie2-large.webp",
       alt: "App screenshot 6",
       hint: "app screen series",
     },
@@ -125,14 +64,14 @@ const features: Feature[][] = [
     {
       label: "Pessoas",
       src: "/person.webp",
-      srcLarge: "/movie-large.png",
+      srcLarge: "/person-large.png",
       alt: "App screenshot 7",
       hint: "app screen person",
     },
     {
       label: "Pessoas",
-      src: "/person-large.webp",
-      srcLarge: "/movie-large.png",
+      src: "/person2.webp",
+      srcLarge: "/person2-large.png",
       alt: "App screenshot 8",
       hint: "app screen series",
     },
@@ -172,3 +111,46 @@ export function VisualShowcase() {
     </ScrollReveal>
   );
 }
+
+const PhoneMockup = ({ feature }: { feature: Feature[] }) => {
+  const [current, setCurrent] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (imagesLoaded) {
+      interval = setInterval(() => {
+        setCurrent((prev) => (prev === 1 ? 0 : 1));
+      }, 10500);
+    }
+    return () => clearInterval(interval);
+  }, [imagesLoaded, feature.length]);
+
+  return (
+    <div className="relative w-full max-w-xs text-center">
+      <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[10px] rounded-[2.5rem] h-[540px] w-[270px] shadow-xl">
+        <div className="rounded-[2rem] overflow-hidden w-[250px] h-[520px] bg-white dark:bg-gray-800 relative">
+          {feature.map((_, index) => (
+            <Image
+              key={`${feature[current].src}-${index}`}
+              src={feature[current].src}
+              className={`absolute top-0 left-0 object-cover w-full h-auto animate-scroll-vertical transition-opacity duration-1000 ${
+                imagesLoaded ? "opacity-100" : "opacity-0"
+              }`}
+              width={250}
+              height={800}
+              loading="eager"
+              quality={100}
+              alt={feature[current].alt}
+              data-ai-hint={feature[current].hint}
+              onLoad={() => {
+                if (index === 0) setImagesLoaded(true);
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      <p className="mt-4 text-lg font-medium">{feature[current].label}</p>
+    </div>
+  );
+};

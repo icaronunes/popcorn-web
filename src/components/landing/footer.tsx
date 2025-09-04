@@ -1,6 +1,4 @@
 import { PopcornIcon } from '@/components/icons/popcorn-icon';
-import { Twitter, Github, Facebook } from 'lucide-react';
-import Link from 'next/link';
 
 export function Footer() {
   return (
