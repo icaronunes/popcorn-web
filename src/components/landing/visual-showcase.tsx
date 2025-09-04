@@ -51,7 +51,7 @@ const PhoneMockup = ({ feature }: { feature: Feature[] }) => {
         <div className="rounded-[2rem] overflow-hidden w-[250px] h-[520px] bg-white dark:bg-gray-800 relative">
           {feature.map((f, index) => (
             <Image
-              key={f.src}
+              key={`${f.src}-${index}`}
               src={f.src}
               className={`absolute top-0 left-0 object-cover w-full h-auto animate-scroll-vertical transition-opacity duration-1000 ${
                 index === current ? "opacity-100" : "opacity-0"
