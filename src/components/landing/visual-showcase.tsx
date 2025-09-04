@@ -13,50 +13,69 @@ type Feature = {
 
 const PhoneMockup = ({ feature }: { feature: Feature[] }) => {
   const [current, setCurrent] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  let loadedCount = 0;
+
+  const handleImageLoad = () => {
+    loadedCount++;
+    if (loadedCount === feature.length * 2) {
+      setImagesLoaded(true);
+    }
+  };
 
   useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index === 1) {
-        index = 0;
-      } else index = 1;
-      setCurrent(index);
-    }, 5000); // troca a cada 3 segundos
-
+    let interval: NodeJS.Timeout;
+    if (imagesLoaded) {
+      interval = setInterval(() => {
+        setCurrent((prev) => (prev === 0 ? 1 : 0));
+      }, 5000);
+    }
     return () => clearInterval(interval);
-  }, [feature]);
+  }, [imagesLoaded]);
+
   return (
     <div className="relative w-full max-w-xs text-center">
+      <div className="hidden">
+        {feature.map((f) => (
+          <Image
+            key={f.src}
+            src={f.src}
+            alt=""
+            width={250}
+            height={800}
+            priority
+            onLoad={handleImageLoad}
+          />
+        ))}
+        {feature.map((f) => (
+          <Image
+            key={f.srcLarge}
+            src={f.srcLarge}
+            alt=""
+            width={250}
+            height={800}
+            priority
+            onLoad={handleImageLoad}
+          />
+        ))}
+      </div>
+
       <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[10px] rounded-[2.5rem] h-[540px] w-[270px] shadow-xl">
         <div className="w-[125px] h-[15px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
         <div className="h-[40px] w-[3px] bg-gray-800 absolute -start-[13px] top-[100px] rounded-s-lg"></div>
         <div className="h-[40px] w-[3px] bg-gray-800 absolute -start-[13px] top-[158px] rounded-s-lg"></div>
         <div className="h-[55px] w-[3px] bg-gray-800 absolute -end-[13px] top-[120px] rounded-e-lg"></div>
         <div className="rounded-[2rem] overflow-hidden w-[250px] h-[520px] bg-white dark:bg-gray-800">
-          {loading ? (
-            <Image
-              src={feature[current].src}
-              className="object-cover w-full h-auto animate-scroll-vertical"
-              width={250}
-              height={800}
-              quality={50}
-              alt={feature[current].alt}
-              data-ai-hint={feature[current].hint}
-            />
-          ) : (
-            <Image
-              src={feature[current].src}
-              className="object-cover w-full h-auto animate-scroll-vertical"
-              width={250}
-              height={800}
-              loading="eager"
-              quality={100}
-              alt={feature[current].alt}
-              data-ai-hint={feature[current].hint}
-              onLoad={() => setLoading(true)}
-            />
-          )}
+          <Image
+            src={feature[current].src}
+            className="object-cover w-full h-auto animate-scroll-vertical"
+            width={250}
+            height={800}
+            loading="eager"
+            quality={100}
+            alt={feature[current].alt}
+            data-ai-hint={feature[current].hint}
+          />
         </div>
       </div>
       <p className="mt-4 text-lg font-medium">{feature[current].label}</p>
