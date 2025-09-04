@@ -4,10 +4,11 @@ export function HeroSection() {
   return (
     <section className="relative bg-secondary/30">
       <Image
-        src="https://picsum.photos/1920/1080"
+        src="/background-large.webp"
         alt="Background image of a movie theater"
-        fill
-        className="object-cover opacity-50"
+        fill={true}
+        loading="lazy"
+        className="object-cover opacity-79"
         data-ai-hint="movie theater"
       />
       <div className="relative container mx-auto px-4 py-24 sm:py-32 text-center">
@@ -15,10 +16,8 @@ export function HeroSection() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-headline leading-tight tracking-tighter">
             Acompanhe tudo que você ama em um só lugar
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Descubra, acompanhe e curta seus filmes, séries e produções, tudo em
-            um só lugar.
-          </p>
+          <p className="mt-10 text-lg md:text-xl text-muted max-w-2xl mx-auto">
+            Descubra, acompanhe e curta seus filmes, séries e as estrelas</p>
         </div>
       </div>
     </section>

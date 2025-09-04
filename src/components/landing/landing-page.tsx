@@ -8,8 +8,8 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-dvh bg-background text-foreground">
       <Header />
       <main className="flex-grow">
-        <HeroSection />
         <VisualShowcase />
+        <HeroSection />
       </main>
       <Footer />
     </div>
