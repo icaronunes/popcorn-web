@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
+const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/popcorn-web",
-  assetPrefix: "/popcorn-web",
+  basePath: isProd ? "/popcorn-web" : "",
+  assetPrefix: isProd ? "/popcorn-web/" : "",
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,
