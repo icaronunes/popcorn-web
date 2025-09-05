@@ -79,6 +79,7 @@ const features: Feature[][] = [
 ];
 
 export function VisualShowcase() {
+
   return (
     <ScrollReveal>
       <section
