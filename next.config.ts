@@ -1,8 +1,9 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  basePath: '/popcorn-web',
+  output: "export",
+  basePath: "/popcorn-web",
+  assetPrefix: "/popcorn-web",
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,
@@ -12,9 +13,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     unoptimized: true,
-    remotePatterns: [
-      
-    ],
+    remotePatterns: [],
   },
 };
 
