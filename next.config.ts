@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   basePath: isProd ? "/popcorn-web" : '',
   assetPrefix: isProd ? "/popcorn-web" : '',
   distDir: 'out',
+  trailingSlash: true,
   // trailingSlash: true,
   /* config options here */
   typescript: {
