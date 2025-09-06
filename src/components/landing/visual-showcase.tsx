@@ -80,9 +80,6 @@ const features: Feature[][] = [
 
 export function VisualShowcase() {
 
-  const isProd = process.env.NODE_ENV === 'production';
-  console.log('teste :>> ', isProd);
-  console.log('teste :>> ', process.env.NODE_ENV);
   return (
     <ScrollReveal>
       <section
