@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   output: "export",
   basePath: isProd ? "/popcorn-web" : '',
   assetPrefix: isProd ? "/popcorn-web" : '',
-  
+  distDir: 'out',
   // trailingSlash: true,
   /* config options here */
   typescript: {
