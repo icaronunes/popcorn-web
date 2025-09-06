@@ -3,9 +3,9 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/popcorn-web",
-  assetPrefix: "/",
-  // trailingSlash: true,
+  basePath: isProd ? "/popcorn-web" : '',
+  // assetPrefix: isProd ? "/popcorn-web/" : '',
+  trailingSlash: true,
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,
