@@ -1,6 +1,9 @@
 import Image from "next/image";
 
 export function HeroSection() {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  const quality = isMobile ? 40 : 100; // Adju
   return (
     <section className="relative bg-secondary/30">
       <Image
@@ -8,6 +11,9 @@ export function HeroSection() {
         alt="Background image of a movie theater"
         fill={true}
         loading="lazy"
+        placeholder="blur"
+        quality={quality}
+        blurDataURL="popcorn.webp"
         className="object-cover opacity-79"
         data-ai-hint="movie theater"
       />

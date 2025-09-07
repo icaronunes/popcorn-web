@@ -11,6 +11,9 @@ type Feature = {
   label: string;
 };
 
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+const quality = isMobile ? 10 : 50; // Adjust quality based on performance needs
+
 const features: Feature[][] = [
   [
     {
@@ -79,7 +82,6 @@ const features: Feature[][] = [
 ];
 
 export function VisualShowcase() {
-
   return (
     <ScrollReveal>
       <section
@@ -90,6 +92,7 @@ export function VisualShowcase() {
           src="/background-oscar.webp"
           alt="background image oscar"
           fill
+          quality={quality}
           className="object-cover opacity-40"
           data-ai-hint="app showcase"
         />
@@ -121,12 +124,13 @@ const PhoneMockup = ({ feature }: { feature: Feature[] }) => {
     let interval: NodeJS.Timeout;
     if (imagesLoaded) {
       interval = setInterval(() => {
-        setCurrent((prev) => (prev === 1 ? 0 : 1));
+        // setCurrent((prev) => (prev === 1 ? 0 : 1));
       }, 10500);
     }
     return () => clearInterval(interval);
   }, [imagesLoaded, feature.length]);
 
+  console.log("quality :>> ", quality);
   return (
     <div className="relative w-full max-w-xs text-center">
       <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[10px] rounded-[2.5rem] h-[540px] w-[270px] shadow-xl">
@@ -140,8 +144,9 @@ const PhoneMockup = ({ feature }: { feature: Feature[] }) => {
               }`}
               width={250}
               height={800}
-              loading="eager"
-              quality={100}
+              loading="lazy"
+              quality={quality}
+              blurDataURL="popcorn.webp"
               alt={feature[current].alt}
               data-ai-hint={feature[current].hint}
               onLoad={() => {
