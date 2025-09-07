@@ -17,7 +17,7 @@ export function HeroSection() {
             Acompanhe tudo que você ama em um só lugar
           </h1>
           <p className="mt-10 text-lg md:text-xl text-muted max-w-2xl mx-auto">
-            Descubra, acompanhe e curta seus filmes, séries e as estrelas</p>
+            Descubra, acompanhe e se informe sobre filmes, séries e as estrelas</p>
         </div>
       </div>
     </section>
