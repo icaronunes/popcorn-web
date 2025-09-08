@@ -1,4 +1,5 @@
 import { PopcornIcon } from '@/components/icons/popcorn-icon';
+import { PopcornName } from './popcorn-name';
 
 export function Footer() {
   return (
@@ -7,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center gap-2 text-foreground mb-4 md:mb-0">
             <PopcornIcon  />
-            <span className="font-bold text-lg font-headline">PopCorn Show</span>
+            <PopcornName />
           </div>
           <div className="text-center text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} PopCorn Show

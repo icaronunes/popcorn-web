@@ -47,7 +47,7 @@ export function ScrollReveal({ children, className, threshold = thresholdCurrent
       ref={ref}
       className={cn(
         'transition-opacity duration-700 ease-out motion-safe:transform motion-safe:transition-transform',
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5',
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-1 translate-y-5',
         className
       )}
       style={{ transitionDelay: isVisible ? delay : '0s' }}

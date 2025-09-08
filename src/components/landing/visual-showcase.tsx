@@ -98,11 +98,19 @@ export function VisualShowcase() {
         />
         <div className="relative container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4">
-              Aplicativo PopCorn Show
-            </h2>
+            <div className="flex items-center justify-center space-x-1 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4">
+                Aplicativo
+              </h2>
+              <h2 className="text-3xl md:text-4xl font-italic font-headline mb-4 text-red-700">
+                PopCorn
+              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4 text-blue-700">
+                Show
+              </h2>
+            </div>
             <p className="text-black-700 md:text-lg">
-              Explore as funcionalidades do nosso aplicativo
+             📱 Explore as funcionalidades do nosso App 📺
             </p>
           </div>
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
