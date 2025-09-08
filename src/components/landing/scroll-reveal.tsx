@@ -10,7 +10,10 @@ interface ScrollRevealProps {
   delay?: string;
 }
 
-export function ScrollReveal({ children, className, threshold = 0.9, delay = '0' }: ScrollRevealProps) {
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+const thresholdCurrent = isMobile ? 0.1 : 0.5; // Adjust quality based on performance needs
+
+export function ScrollReveal({ children, className, threshold = thresholdCurrent, delay = '0' }: ScrollRevealProps) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
