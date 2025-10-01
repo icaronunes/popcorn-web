@@ -1,11 +1,24 @@
+"use client";
+import { useLanguage } from "@/hooks/use-Language";
+import { useIsMobile } from "@/hooks/use-mobile";
 import Image from "next/image";
 
 export function HeroSection() {
-  var isMobile = undefined;
-  if (typeof navigator !== "undefined") {
-    isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  }
+  const isMobile = useIsMobile();
+  const traducao = {
+    en: {
+      title: "Everything you love in one place",
+      description:
+        "Discover, track, and stay informed about movies, series, and stars",
+    },
+    pt: {
+      title: "Tudo que você ama em um só lugar",
+      description:
+        "Descubra, acompanhe e se informe sobre filmes, séries e as estrelas",
+    },
+  };
 
+  const langague = useLanguage() == "pt" ? traducao["pt"] : traducao["en"];
   const quality = isMobile ? 40 : 100;
   return (
     <section className="relative bg-secondary/30">
@@ -23,10 +36,10 @@ export function HeroSection() {
       <div className="relative container mx-auto px-4 py-24 sm:py-32 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-headline leading-tight tracking-tighter">
-            Acompanhe tudo que você ama em um só lugar
+            {langague.title}
           </h1>
           <p className="mt-10 text-lg md:text-xl text-muted max-w-2xl mx-auto">
-            Descubra, acompanhe e se informe sobre filmes, séries e as estrelas
+            {langague.description}
           </p>
         </div>
       </div>

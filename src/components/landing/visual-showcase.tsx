@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { ScrollReveal } from "./scroll-reveal";
 import { useEffect, useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useLanguage } from "@/hooks/use-Language";
 
 type Feature = {
   src: string;
@@ -9,15 +11,14 @@ type Feature = {
   alt: string;
   hint: string;
   label: string;
+  label_en: string;
 };
-
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-const quality = isMobile ? 50 : 100; // Adjust quality based on performance needs
 
 const features: Feature[][] = [
   [
     {
       label: "Acompanhando",
+      label_en: "Fallowing",
       src: "/segue.webp",
       srcLarge: "/segue-large.webp",
       alt: "App screenshot 1",
@@ -25,6 +26,7 @@ const features: Feature[][] = [
     },
     {
       label: "Acompanhando",
+      label_en: "Fallowing",
       src: "/segue2.webp",
       srcLarge: "/segue2-large.webp",
       alt: "App screenshot 2",
@@ -34,6 +36,7 @@ const features: Feature[][] = [
   [
     {
       label: "Series",
+      label_en: "Tv",
       src: "/serie.webp",
       srcLarge: "/serie-large.webp",
       alt: "App screenshot 3",
@@ -41,6 +44,7 @@ const features: Feature[][] = [
     },
     {
       label: "Series",
+      label_en: "Tv",
       src: "/serie2.webp",
       srcLarge: "/segue2-large.webp",
       alt: "App screenshot 4",
@@ -50,6 +54,7 @@ const features: Feature[][] = [
   [
     {
       label: "Filmes",
+      label_en: "Movies",
       src: "/movie.webp",
       srcLarge: "/movie-large.webp",
       alt: "App screenshot 5",
@@ -57,6 +62,7 @@ const features: Feature[][] = [
     },
     {
       label: "Filmes",
+      label_en: "Movies",
       src: "/movie2.webp",
       srcLarge: "/movie2-large.webp",
       alt: "App screenshot 6",
@@ -66,6 +72,7 @@ const features: Feature[][] = [
   [
     {
       label: "Pessoas",
+      label_en: "Peoples",
       src: "/person.webp",
       srcLarge: "/person-large.png",
       alt: "App screenshot 7",
@@ -73,6 +80,7 @@ const features: Feature[][] = [
     },
     {
       label: "Pessoas",
+      label_en: "Peoples",
       src: "/person2.webp",
       srcLarge: "/person2-large.png",
       alt: "App screenshot 8",
@@ -82,6 +90,15 @@ const features: Feature[][] = [
 ];
 
 export function VisualShowcase() {
+  const quality = useIsMobile() ? 50 : 100; // Adjust quality based on performance needs
+  const traducoes = {
+    en: { app: "App", desc: "📱 Explore the features of our App 📺" },
+    pt: {
+      app: "Aplicativo",
+      desc: "📱 Explore as funcionalidades do nosso App 📺",
+    },
+  };
+  const language = useLanguage() == "pt" ? traducoes["pt"] : traducoes["en"];
   return (
     <ScrollReveal>
       <section
@@ -100,7 +117,7 @@ export function VisualShowcase() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="flex items-center justify-center space-x-1 mb-4">
               <h2 className="text-3xl md:text-4xl font-bold font-headline mb-4">
-                Aplicativo
+                {language.app}
               </h2>
               <h2 className="text-3xl md:text-4xl font-italic font-headline mb-4 text-red-700">
                 PopCorn
@@ -109,9 +126,7 @@ export function VisualShowcase() {
                 Show
               </h2>
             </div>
-            <p className="text-black-700 md:text-lg">
-             📱 Explore as funcionalidades do nosso App 📺
-            </p>
+            <p className="text-black-700 md:text-lg">{language.desc}</p>
           </div>
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
             {features.map((feature, index) => (
@@ -125,6 +140,7 @@ export function VisualShowcase() {
 }
 
 const PhoneMockup = ({ feature }: { feature: Feature[] }) => {
+  const quality = useIsMobile() ? 50 : 100; // Adjust quality based on performance needs
   const [current, setCurrent] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
@@ -137,7 +153,7 @@ const PhoneMockup = ({ feature }: { feature: Feature[] }) => {
     }
     return () => clearInterval(interval);
   }, [imagesLoaded, feature.length]);
-
+  const label = useLanguage() == "pt" ? feature[current].label : feature[current].label_en;
   return (
     <div className="relative w-full max-w-xs text-center">
       <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[10px] rounded-[2.5rem] h-[540px] w-[270px] shadow-xl">
@@ -163,7 +179,7 @@ const PhoneMockup = ({ feature }: { feature: Feature[] }) => {
           ))}
         </div>
       </div>
-      <p className="mt-4 text-lg font-medium">{feature[current].label}</p>
+      <p className="mt-4 text-lg font-medium">{label}</p>
     </div>
   );
 };
