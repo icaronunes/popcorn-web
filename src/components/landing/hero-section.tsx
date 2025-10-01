@@ -1,9 +1,12 @@
 import Image from "next/image";
 
 export function HeroSection() {
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  var isMobile = undefined;
+  if (typeof navigator !== "undefined") {
+    isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  }
 
-  const quality = isMobile ? 40 : 100; // Adju
+  const quality = isMobile ? 40 : 100;
   return (
     <section className="relative bg-secondary/30">
       <Image
@@ -23,7 +26,8 @@ export function HeroSection() {
             Acompanhe tudo que você ama em um só lugar
           </h1>
           <p className="mt-10 text-lg md:text-xl text-muted max-w-2xl mx-auto">
-            Descubra, acompanhe e se informe sobre filmes, séries e as estrelas</p>
+            Descubra, acompanhe e se informe sobre filmes, séries e as estrelas
+          </p>
         </div>
       </div>
     </section>
