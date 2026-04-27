@@ -1,0 +1,27 @@
+pt-br
+Prezado usuário,
+
+A fim de efetuar a exclusão de seus dados de nosso banco de dados por meio de um procedimento externo ao aplicativo, solicitamos que encaminhe um e-mail para (icarornunes@gmail.com), indicando o endereço de e-mail associado à sua conta no aplicativo.
+
+Contudo, ressaltamos veementemente a recomendação de utilizar a opção disponível no próprio aplicativo para realizar a exclusão de dados. Essa funcionalidade pode ser acessada por meio do menu de configurações.
+
+Ao optar por qualquer um dos métodos supracitados, asseguramos que todas as informações relacionadas à sua conta serão completamente removidas de nosso sistema.
+
+Atenciosamente,
+
+PopCorn Show
+
+
+en
+
+Dear user,
+
+In order to delete your data from our database outside the application, we kindly request you to send an email to (icarornunes@gmail.com), providing the email address associated with your app account.
+
+However, we strongly recommend utilizing the in-app option for data deletion, which can be found in the settings menu.
+
+By choosing either of the aforementioned methods, we assure you that all information linked to your account will be entirely erased from our system.
+
+Sincerely,
+
+PopCorn Show
