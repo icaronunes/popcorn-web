@@ -4,6 +4,7 @@ import { VisualShowcase } from "./visual-showcase";
 import { Footer } from "./footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { PopCornCinema } from "./popcorn-cinema";
 
 export default function LandingPage() {
   return (
@@ -13,6 +14,7 @@ export default function LandingPage() {
       <Header />
       <main className="flex-grow">
         <VisualShowcase />
+        <PopCornCinema />
         <HeroSection />
       </main>
       <Footer />
