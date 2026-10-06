@@ -48,7 +48,7 @@ export function PopCornCinema() {
           </p>
 
           <Link
-            href="https://popcorn-cinema-web.vercel.app/"
+            href="https://play.google.com/store/apps/details?id=br.com.popcorncinema"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Baixar PopCorn Cinema no Google Play"
