@@ -30,8 +30,17 @@ export function PopCornCinema() {
           </h2>
 
           <p className="mt-5 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg">
-            Integramos o <span className="text-primary">PopCorn Cinema</span> em
-            nosso <span className="text-blue-500">PopCorn Show</span>
+            Integramos o {" "}
+          <Link
+            href="https://popcorn-cinema-web.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Baixar PopCorn Cinema no Google Play"
+            className="mt-0 inline-flex rounded-xl transition-transform hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[#171923]"
+          >
+            <span className="text-primary">PopCorn Cinema</span>
+            </Link> {" "}
+            em nosso <span className="text-blue-500">PopCorn Show</span>
           </p>
           <p className="mt-0 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg">
             Para que você possa ver os filmes em cartaz no cinema e ainda ter
