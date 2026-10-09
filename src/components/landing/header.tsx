@@ -19,7 +19,7 @@ export function Header() {
           </Link>
         </div>
         <div className="flex flex-col items-start justify-center leading-tight space-y-0.1">
-          <div className="font-italic font-bold text-l">500 mil+</div>
+          <div className="font-italic font-bold text-l">700 mil+</div>
           <div className="font-italic text-xs -mt-1">Downloads</div>
         </div>
       </div>
